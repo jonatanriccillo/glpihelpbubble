@@ -11,7 +11,7 @@
    <authors><author>Jonatan Riccillo</author></authors>
    <versions>
       <version>
-         <num>0.2.0</num>
+         <num>0.2.1</num>
          <compatibility>~11.0</compatibility>
       </version>
    </versions>

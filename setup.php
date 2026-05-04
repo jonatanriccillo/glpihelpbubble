@@ -1,7 +1,7 @@
 <?php
 use Glpi\Http\Firewall;
 
-define('PLUGIN_HELPBUBBLE_VERSION', '0.2.0');
+define('PLUGIN_HELPBUBBLE_VERSION', '0.2.1');
 
 function plugin_init_helpbubble() {
    global $PLUGIN_HOOKS;

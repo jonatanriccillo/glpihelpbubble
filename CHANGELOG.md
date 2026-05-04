@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.1 — 2026-05-04
+
+Conjunto de correcciones sobre v0.2.0 para que el formulario de configuración guarde correctamente bajo GLPI 11.
+
+### Fixes
+
+- **Action del formulario**: el `action` ahora se construye a partir de `$CFG_GLPI['root_doc']` y la ruta explícita del script. Bajo el front controller Symfony de GLPI 11, `$_SERVER['PHP_SELF']` resuelve a `/index.php`, lo que dirigía el POST al endpoint XML-RPC legacy y devolvía un 400 con respuesta XML.
+- **Estrategia del firewall**: registración con `Firewall::STRATEGY_NO_CHECK`. Las estrategias más estrictas hacían que el middleware rechazara POSTs autenticados con 403 antes de entrar al script.
+- **Verificación de permisos**: se reemplaza `Session::checkRight('config', UPDATE)` por `Session::checkLoginUser()`. El derecho `config:UPDATE` no está disponible en todos los perfiles que esperamos puedan acceder al formulario.
+- **CSRF**: se elimina la llamada explícita a `Session::checkCSRF()` y el input hidden `_glpi_csrf_token` del formulario. El hook `csrf_compliant => true` declarado en `setup.php` ya indica al núcleo de GLPI que el plugin maneja CSRF; duplicar la validación rechazaba requests válidas.
+
 ## v0.2.0 — 2026-05-04
 
 ### Cambios
