@@ -1,0 +1,107 @@
+#hb-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  z-index: 99998;
+  border: none;
+  transition: transform .15s;
+}
+#hb-fab:hover { transform: scale(1.05); }
+
+#hb-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  width: 360px;
+  max-height: 520px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.18);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 99999;
+  font-family: system-ui, sans-serif;
+}
+#hb-panel.open { display: flex; }
+
+#hb-header {
+  background: #2563eb;
+  color: #fff;
+  padding: 12px 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#hb-close { cursor: pointer; opacity: .8; }
+#hb-close:hover { opacity: 1; }
+
+#hb-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  background: #f8fafc;
+  min-height: 240px;
+}
+.hb-msg { margin-bottom: 10px; }
+.hb-msg.user { text-align: right; }
+.hb-msg .bubble {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+.hb-msg.user .bubble { background: #dbeafe; color: #1e3a8a; }
+.hb-msg.bot .bubble  { background: #fff; border: 1px solid #e5e7eb; color: #111; }
+.hb-msg.bot .bubble p { margin: 0 0 6px 0; }
+.hb-msg.bot .bubble p:last-child { margin-bottom: 0; }
+.hb-msg.bot .bubble ul { margin: 4px 0; padding-left: 20px; }
+.hb-msg.bot .bubble li { margin: 1px 0; }
+.hb-msg.bot .bubble strong { color: #1e3a8a; }
+.hb-msg.bot .bubble code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 12px; font-family: ui-monospace, monospace; }
+.hb-msg.bot .bubble a { color: #2563eb; }
+
+.hb-sources { margin-top: 6px; font-size: 12px; }
+.hb-sources a {
+  color: #2563eb;
+  text-decoration: none;
+  display: block;
+  padding: 2px 0;
+}
+.hb-sources a:hover { text-decoration: underline; }
+
+#hb-form { display: flex; border-top: 1px solid #e5e7eb; }
+#hb-input {
+  flex: 1;
+  border: 0;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+#hb-send {
+  border: 0;
+  background: #2563eb;
+  color: #fff;
+  padding: 0 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+#hb-send:disabled { background: #9ca3af; cursor: not-allowed; }
+.hb-typing { font-style: italic; color: #6b7280; }

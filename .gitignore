@@ -1,0 +1,12 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vscode/
+
+# Runtime
+docs/*
+!docs/.gitkeep

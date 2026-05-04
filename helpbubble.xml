@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <name>HelpBubble</name>
+   <key>helpbubble</key>
+   <state>stable</state>
+   <description><short><en>AI help bubble for GLPI</en></short></description>
+   <homepage></homepage>
+   <download></download>
+   <issues></issues>
+   <readme></readme>
+   <authors><author>Jonatan Riccillo</author></authors>
+   <versions>
+      <version>
+         <num>0.1.0</num>
+         <compatibility>~11.0</compatibility>
+      </version>
+   </versions>
+   <langs><lang>en_GB</lang><lang>es_AR</lang></langs>
+   <license>GPLv3</license>
+   <tags><en><tag>ai</tag><tag>help</tag><tag>chatbot</tag></en></tags>
+</root>
