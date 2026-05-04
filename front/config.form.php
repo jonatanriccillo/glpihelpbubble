@@ -51,6 +51,7 @@ Html::header(
    <?php endif; ?>
 
    <form method="POST" action="<?= htmlspecialchars($action) ?>" class="card p-4" style="max-width:760px">
+      <input type="hidden" name="_glpi_csrf_token" value="<?= Session::getNewCSRFToken() ?>">
       <div class="mb-4">
          <label class="form-label fw-bold">Modo de operación</label>
          <div class="form-check">
