@@ -1,5 +1,5 @@
 (function () {
-  const ENDPOINT = "/helpbubble-api/ask.php";
+  const ENDPOINT = "/plugins/helpbubble/ajax/ask.php";
 
   if (window.__helpbubble_loaded) return;
   window.__helpbubble_loaded = true;
@@ -8,6 +8,16 @@
 
   const sessionId = (crypto.randomUUID && crypto.randomUUID()) ||
                     String(Date.now()) + Math.random();
+
+  function getCsrfToken() {
+    if (window.CFG_GLPI && CFG_GLPI.csrf_token) return CFG_GLPI.csrf_token;
+    const meta = document.querySelector('meta[property="glpi:csrf_token"]')
+              || document.querySelector('meta[name="csrf-token"]');
+    if (meta && meta.content) return meta.content;
+    const inp = document.querySelector('input[name="_glpi_csrf_token"]');
+    if (inp && inp.value) return inp.value;
+    return '';
+  }
 
   function build() {
     const fab = document.createElement('button');
@@ -115,9 +125,13 @@
       typing.querySelector('.bubble').classList.add('hb-typing');
 
       try {
+        const headers = { 'Content-Type': 'application/json' };
+        const csrf = getCsrfToken();
+        if (csrf) headers['X-Glpi-Csrf-Token'] = csrf;
         const res = await fetch(ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          headers: headers,
           body: JSON.stringify({
             question: q,
             session_id: sessionId,

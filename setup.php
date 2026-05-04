@@ -1,7 +1,5 @@
 <?php
-use Glpi\Http\Firewall;
-
-define('PLUGIN_HELPBUBBLE_VERSION', '0.1.0');
+define('PLUGIN_HELPBUBBLE_VERSION', '0.2.0');
 
 function plugin_init_helpbubble() {
    global $PLUGIN_HOOKS;
@@ -10,14 +8,6 @@ function plugin_init_helpbubble() {
    $PLUGIN_HOOKS['add_javascript']['helpbubble'] = ['public/helpbubble.js'];
    $PLUGIN_HOOKS['add_css']['helpbubble']        = ['public/helpbubble.css'];
    $PLUGIN_HOOKS['config_page']['helpbubble']    = 'front/config.form.php';
-
-   if (class_exists('\\Glpi\\Http\\Firewall')) {
-      Firewall::addPluginStrategyForLegacyScripts(
-         'helpbubble',
-         '#.*#',
-         Firewall::STRATEGY_AUTHENTICATED
-      );
-   }
 }
 
 function plugin_version_helpbubble() {
