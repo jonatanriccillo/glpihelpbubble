@@ -3,7 +3,9 @@ include('../../../inc/includes.php');
 
 Session::checkRight('config', UPDATE);
 
-global $DB;
+global $DB, $CFG_GLPI;
+
+$action = ($CFG_GLPI['root_doc'] ?? '') . '/plugins/helpbubble/front/config.form.php';
 
 $saved = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,7 +50,7 @@ Html::header(
       <div class="alert alert-success">Configuración guardada.</div>
    <?php endif; ?>
 
-   <form method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="card p-4" style="max-width:760px">
+   <form method="POST" action="<?= htmlspecialchars($action) ?>" class="card p-4" style="max-width:760px">
       <div class="mb-4">
          <label class="form-label fw-bold">Modo de operación</label>
          <div class="form-check">
