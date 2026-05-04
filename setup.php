@@ -15,7 +15,7 @@ function plugin_init_helpbubble() {
       Firewall::addPluginStrategyForLegacyScripts(
          'helpbubble',
          '#.*#',
-         Firewall::STRATEGY_AUTHENTICATED
+         Firewall::STRATEGY_NO_CHECK
       );
    }
 }

@@ -1,7 +1,7 @@
 <?php
 include('../../../inc/includes.php');
 
-Session::checkRight('config', UPDATE);
+Session::checkLoginUser();
 
 global $DB, $CFG_GLPI;
 
@@ -9,8 +9,6 @@ $action = ($CFG_GLPI['root_doc'] ?? '') . '/plugins/helpbubble/front/config.form
 
 $saved = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   Session::checkCSRF($_POST);
-
    $stmt = $DB->prepare("REPLACE INTO glpi_plugin_helpbubble_config (k, v) VALUES (?, ?)");
    foreach (['mode', 'n8n_url', 'xai_api_key', 'xai_model'] as $f) {
       if (!isset($_POST[$f])) continue;
@@ -51,7 +49,6 @@ Html::header(
    <?php endif; ?>
 
    <form method="POST" action="<?= htmlspecialchars($action) ?>" class="card p-4" style="max-width:760px">
-      <input type="hidden" name="_glpi_csrf_token" value="<?= Session::getNewCSRFToken() ?>">
       <div class="mb-4">
          <label class="form-label fw-bold">Modo de operación</label>
          <div class="form-check">
